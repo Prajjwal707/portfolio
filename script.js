@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function() {
      const sections = document.querySelectorAll('section');
      const navLinks = document.querySelectorAll('nav a');
  
-     // Smooth scroll for navigation links
      navLinks.forEach(link => {
          link.addEventListener('click', function(e) {
              e.preventDefault();
@@ -18,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
          });
      });
  
-     // Intersection Observer for section detection
+
      const observerOptions = {
          root: null,
          rootMargin: '0px',
@@ -45,7 +44,6 @@ document.addEventListener('DOMContentLoaded', function() {
          observer.observe(section);
      });
  
-     // Handle initial active state
      window.addEventListener('load', () => {
          const hash = window.location.hash;
          if(hash) {
@@ -56,7 +54,6 @@ document.addEventListener('DOMContentLoaded', function() {
          }
      });
  
-     // Update URL hash on scroll
      window.addEventListener('scroll', () => {
          let currentSection = '';
          sections.forEach(section => {
@@ -69,3 +66,67 @@ document.addEventListener('DOMContentLoaded', function() {
          window.history.replaceState({}, '', '#' + currentSection);
      });
  });
+
+document.addEventListener("DOMContentLoaded", function() {
+    const slider = document.getElementById('sliderContainer');
+    const wrapper = document.getElementById('servicesWrapper');
+    
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    let currentTranslate = 0;
+    let prevTranslate = 0;
+
+    slider.addEventListener('mousedown', (e) => {
+        isDown = true;
+        startX = e.pageX - wrapper.offsetLeft;
+        slider.classList.add('active');
+    });
+
+    slider.addEventListener('mouseleave', () => {
+        isDown = false;
+    });
+
+    slider.addEventListener('mouseup', () => {
+        isDown = false;
+        prevTranslate = currentTranslate;
+    });
+
+    slider.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - wrapper.offsetLeft;
+        const walk = (x - startX) * 1.5; 
+        currentTranslate = prevTranslate + walk;
+        
+
+        const maxScroll = -(wrapper.scrollWidth - slider.offsetWidth);
+        if (currentTranslate > 0) currentTranslate = 0;
+        if (currentTranslate < maxScroll) currentTranslate = maxScroll;
+
+        wrapper.style.transform = `translateX(${currentTranslate}px)`;
+    });
+
+    slider.addEventListener('touchstart', (e) => {
+        isDown = true;
+        startX = e.touches[0].pageX - wrapper.offsetLeft;
+    });
+
+    slider.addEventListener('touchend', () => {
+        isDown = false;
+        prevTranslate = currentTranslate;
+    });
+
+    slider.addEventListener('touchmove', (e) => {
+        if (!isDown) return;
+        const x = e.touches[0].pageX - wrapper.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        currentTranslate = prevTranslate + walk;
+        
+        const maxScroll = -(wrapper.scrollWidth - slider.offsetWidth);
+        if (currentTranslate > 0) currentTranslate = 0;
+        if (currentTranslate < maxScroll) currentTranslate = maxScroll;
+
+        wrapper.style.transform = `translateX(${currentTranslate}px)`;
+    });
+});

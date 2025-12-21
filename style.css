@@ -250,16 +250,16 @@ span{
         content: "Web Developer";
     }
     21%, 40%{
-        content: "Developer";
+        content: "Cloud computing";
     }
     41%, 60%{
         content: "Web Designer";
     }
     61%, 80%{
-        content: "Cloud computing";
+        content: "Developer";
     }
     81%, 100%{
-        content: "Cybersecurity";
+        content: "DevOps";
     }
 }
 
@@ -355,4 +355,134 @@ span{
     .skill-card {
         margin-bottom: 2rem;
     }
+}
+
+
+.services-section {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 200px 5% 150px 5%; 
+    overflow-x: hidden;
+    user-select: none;
+}
+
+.section-title {
+    font-size: 5rem; 
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 900;
+    letter-spacing: -3px;
+    line-height: 1;
+}
+
+.section-title .highlight {
+    color: #b74b4b;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 120px;
+    font-size: 1.8rem;
+    font-weight: 300;
+}
+
+.services-slider-container {
+    width: 100%;
+    overflow: visible; 
+    cursor: grab;
+    position: relative;
+    padding-top: 40px; 
+}
+
+.services-slider-container:active {
+    cursor: grabbing;
+}
+
+.services-wrapper {
+    display: flex;
+    gap: 40px;
+    transition: transform 0.1s ease-out;
+    will-change: transform;
+}
+
+.service-card {
+    flex: 0 0 31%; 
+    background: #111111;
+    padding: 90px 60px; 
+    min-height: 650px; 
+    border-radius: 30px;
+    text-align: left;
+    border: 3px solid #222;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    z-index: 1;
+}
+
+.service-icon {
+    font-size: 5.1rem; 
+    color: #b74b4b;
+    margin-bottom: 50px;
+}
+
+.service-card h3 {
+    margin-bottom: 35px;
+    font-size: 3.1rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.service-card p {
+    color: #aaaaaa;
+    line-height: 1.7;
+    font-size: 1.6rem; 
+    margin-bottom: 40px;
+}
+
+/* Project Link */
+.project-link {
+    margin-top: auto; 
+    color: #b74b4b;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: color 0.3s ease;
+}
+
+.project-link:hover {
+    color: #ffffff;
+}
+
+.service-card:hover {
+    border-color: #b74b4b;
+    transform: translateY(-30px); 
+    background: #161616;
+    z-index: 10; 
+    box-shadow: 0 40px 80px rgba(183, 75, 75, 0.15);
+}
+
+.scroll-hint {
+    text-align: center;
+    margin-top: 60px;
+    color: #333;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+}
+
+@media (max-width: 1300px) {
+    .service-card { flex: 0 0 45%; min-height: 600px; }
+    .section-title { font-size: 4rem; }
+}
+
+@media (max-width: 850px) {
+    .service-card { flex: 0 0 85%; min-height: 550px; padding: 60px 40px; }
+    .section-title { font-size: 3rem; }
+    .service-card h3 { font-size: 2.5rem; }
 }
