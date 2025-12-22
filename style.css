@@ -20,20 +20,37 @@ body{
     color: white;
 }
 
-header{
+                                                                            
+header {
+    position: sticky; 
     margin-top: 20px;
-    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     padding: 2rem 9%;
-    background-color: transparent;
-    filter: drop-shadow(10px);
+    z-index: 1000;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 100;
+    padding: 2rem 9%; 
+
+    background: linear-gradient(
+        to bottom, 
+        rgba(0, 0, 0, 1) 0%,    
+        rgba(0, 0, 0, 0.8) 70%,  
+        rgba(0, 0, 0, 0) 100%    
+    );
+    
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3)); 
 }
+
+
+
+
 
 .logo{
     font-size: 3rem;
@@ -546,8 +563,7 @@ span{
 
 /* Info Column & Achievements */
 .info-column { flex: 1.2; }
-.exp-role { font-size: 3rem; line-height: 1.1; margin-bottom: 10px; }
-.exp-role .company { color: var(--accent-red); }
+.exp-role { font-size: 3rem; line-height: 1.1; margin-bottom: 10px; color: var(--accent-red); }
 .exp-date { display: block; margin-bottom: 40px; color: var(--text-muted); font-size: 1.2rem; }
 .exp-description p { font-size: 1.5rem; line-height: 1.8; margin-bottom: 30px; }
 .achievements li { margin-bottom: 18px; font-size: 1.3rem; color: #ccc; }
