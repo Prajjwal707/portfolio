@@ -532,7 +532,7 @@ span{
     color: var(--text-muted);
     padding: 25px 30px;
     text-align: left;
-    font-size: 1.8rem;
+    font-size: 18rem;
     font-weight: 700;
     cursor: pointer;
     display: flex;
@@ -589,13 +589,6 @@ span{
 
 /* Certificate Column */
 .cert-column { flex: 1; display: flex; align-items: center; justify-content: center; }
-.image-proof-container {
-    width: 100%;
-    border-radius: 15px;
-    overflow: hidden;
-    border: 2px solid #222;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-}
 .cert-image { width: 100%; transition: transform 0.5s ease; }
 .image-proof-container:hover .cert-image { transform: scale(1.08); }
 
@@ -631,7 +624,7 @@ span{
     color: var(--text-muted);
     padding: 25px 30px;
     text-align: left;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: 700;
     cursor: pointer;
     transition: 0.3s;
@@ -661,11 +654,11 @@ span{
 .info-column { flex: 1.2; }
 .cert-column { flex: 1; padding: 10px; } /* Buffer for hover border */
 
-.exp-role { font-size: 2.8rem; line-height: 1.1; margin-bottom: 10px; }
+.exp-role { font-size: 3rem; line-height: 1.1; margin-bottom: 10px; }
 .exp-role .company { color: var(--accent-red); }
-.exp-date { display: block; margin-bottom: 40px; color: var(--text-muted); font-size: 1.2rem; }
-.exp-description p { font-size: 1.4rem; line-height: 1.8; margin-bottom: 30px; }
-.achievements li { margin-bottom: 15px; font-size: 1.2rem; color: #ccc; }
+.exp-date { display: block; margin-bottom: 40px; color: var(--text-muted); font-size: 1.4rem; }
+.exp-description p { font-size: 1.8rem; line-height: 1.8; margin-bottom: 30px; }
+.achievements li { margin-bottom: 15px; font-size: 1.5rem; color: #ccc; }
 
 /* Tech Pills with Fixed Hover */
 .tech-pills { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 50px; }
@@ -687,9 +680,10 @@ span{
     border: 2px solid #222;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     background: #000;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
     position: relative;
     z-index: 5;
+    box-shadow: 0 40px 70px rgba(0,0,0,0.5);
+
 }
 
 .cert-image { width: 100%; display: block; border-radius: 13px; }
@@ -698,7 +692,7 @@ span{
 .image-proof-container:hover {
     transform: scale(1.05); /* Scales the whole container including border */
     border-color: var(--accent-red);
-    box-shadow: 0 20px 60px rgba(183, 75, 75, 0.3);
+    box-shadow: 0 40px 80px rgba(183, 75, 75, 0.3);
 }
 
 /* Animations */
