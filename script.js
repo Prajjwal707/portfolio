@@ -130,3 +130,37 @@ document.addEventListener("DOMContentLoaded", function() {
         wrapper.style.transform = `translateX(${currentTranslate}px)`;
     });
 });
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const tabs = document.querySelectorAll(".exp-tab");
+    const cards = document.querySelectorAll(".exp-detail-card");
+
+    // 1. Tab Logic
+    tabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+            const target = tab.getAttribute("data-target");
+
+            // Reset States
+            tabs.forEach(t => t.classList.remove("active"));
+            cards.forEach(c => c.classList.remove("active"));
+
+            // Set Active State
+            tab.classList.add("active");
+            document.getElementById(target).classList.add("active");
+        });
+    });
+
+    // 2. Scroll Reveal Logic
+    const revealOnScroll = () => {
+        document.querySelectorAll(".reveal").forEach(el => {
+            const triggerPoint = window.innerHeight * 0.85;
+            if (el.getBoundingClientRect().top < triggerPoint) {
+                el.classList.add("active");
+            }
+        });
+    };
+
+    window.addEventListener("scroll", revealOnScroll);
+    revealOnScroll(); 
+});
