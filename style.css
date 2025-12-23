@@ -897,3 +897,311 @@ nav { display: flex; justify-content: space-between; padding: 20px; color: white
     from { transform: scale(0.8); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
 }
+
+/* --- Global Reset --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --accent-red: #b74b4b;
+    --bg-dark: #050505;
+    --card-dark: #000000;
+    --text-light: #ffffff;
+    --text-dim: #a0a0a0;
+    --font-stack: 'Poppins', sans-serif; /* Make sure you import this font */
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    font-family: var(--font-stack);
+    overflow-x: hidden;
+}
+
+/* --- Main Layout: 50/50 Split --- */
+.split-container {
+    display: flex;
+    width: 100vw;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+/* --- LEFT SIDE (Visuals) --- */
+.visual-pane {
+    flex: 0.8; 
+    position: relative;
+    background-color: var(--bg-dark);
+    display: flex;
+    align-items: center; 
+    justify-content: flex-start; 
+    
+    /* CHANGE: Reduced from 40px to 0px to shift text left */
+    padding-left: 0px; 
+    
+    z-index: 1;
+}
+
+
+.moon-img {
+    position: absolute;
+    top: 50%;
+    right: -275px; 
+    transform: translateY(-50%);
+    width: 550px;
+    height: 550px; /* Fixed height to ensure circle */
+    object-fit: cover; /* Ensures image fills the square without stretching */
+    border-radius: 50%; /* Makes sure it's a perfect circle */
+    z-index: 0; 
+    opacity: 0.85; /* Slight transparency to blend */
+    filter: contrast(1.2) brightness(0.8) drop-shadow(0 0 40px rgba(183, 75, 75, 0.4)); /* Red glow and moody look */
+}
+
+/* Text Overlay 
+   - z-index: 10 ensures it's on top of the moon.
+*/
+.overlay-content {
+    
+    
+    
+    /* CRITICAL CHANGE: Limit width so it doesn't hit the moon */
+    max-width: 450px; 
+    
+    /* Optional: If it feels too low, use negative margin to pull it up */
+    margin-top: -20px; 
+    margin-left: -120px;
+}
+
+.hero-heading {
+    font-size: 6.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 30px;
+    /* Strong shadow to make text pop against the bright moon part */
+    text-shadow: 0 5px 30px rgba(0,0,0,1);
+}
+
+/* Email Capsule */
+.email-capsule {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(0, 0, 0, 0.7); /* Dark background for contrast */
+    padding: 12px 25px;
+    border-radius: 50px;
+    border: 1px solid rgba(183, 75, 75, 0.3); /* Subtle red border */
+    backdrop-filter: blur(10px);
+    position: relative;
+}
+
+#email-address {
+    color: #e0e0e0;
+    font-size: 1.3rem;
+    letter-spacing: 0.5px;
+}
+
+#copy-action-btn {
+    background: none;
+    border: none;
+    color: var(--accent-red);
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: transform 0.2s;
+}
+
+#copy-action-btn:hover {
+    transform: scale(1.1);
+}
+
+.success-tooltip {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: var(--accent-red);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+.success-tooltip.active {
+    opacity: 1;
+}
+
+/* --- RIGHT SIDE (Form Card) --- */
+.form-pane {
+    flex: 1.2; /* Makes the form section wider */
+    background-color: var(--card-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    border-left: 1px solid #111;
+}
+
+.main-form {
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 20px;
+}
+
+/* Floating Label Inputs */
+.input-box {
+    position: relative;
+    width: 100%;
+}
+
+.input-box input,
+.input-box textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #333;
+    padding: 10px 0;
+    font-size: 1.1rem;
+    color: white;
+    outline: none;
+    font-family: inherit;
+    resize: none;
+    transition: border-color 0.3s;
+    
+    /* FIX: Removes the bottom whitespace gap so lines don't separate */
+    display: block; 
+}
+
+/* Labels */
+.input-box label {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    color: #666;
+    pointer-events: none;
+    transition: 0.3s ease all;
+    
+    /* FIX: Increased size for better visibility */
+    font-size: 1.15rem; 
+}
+
+/* Floating Animation */
+.input-box input:focus ~ label,
+.input-box input:not(:placeholder-shown) ~ label,
+.input-box textarea:focus ~ label,
+.input-box textarea:not(:placeholder-shown) ~ label {
+    top: -20px;
+    
+    /* FIX: Slightly larger floating text */
+    font-size: 1.1rem; 
+    
+    color: var(--accent-red);
+}
+
+/* Red Line Animation */
+.gls-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: var(--accent-red);
+    transition: width 0.4s ease;
+}
+
+.input-box input:focus ~ .gls-line,
+.input-box textarea:focus ~ .gls-line {
+    width: 100%;
+}
+
+/* Submit Button */
+.send-button {
+    padding: 15px;
+    background: transparent;
+    color: var(--accent-red);
+    border: 1px solid var(--accent-red);
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.send-button:hover {
+    background: var(--accent-red);
+    color: white; /* Text turns white */
+    box-shadow: 0 0 30px rgba(183, 75, 75, 0.6);
+}
+
+/* --- Social Buttons (Big & Glowing) --- */
+.social-cluster {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    margin-top: 30px;
+}
+
+.glow-icon {
+    color: #555;
+    font-size: 2.2rem; /* Much bigger size */
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Neon Glow Effect on Hover */
+.glow-icon:hover {
+    color: var(--accent-red);
+    /* This text-shadow creates the neon effect */
+    text-shadow: 0 0 10px var(--accent-red), 0 0 20px var(--accent-red);
+    transform: scale(1.15) translateY(-5px);
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 900px) {
+    .split-container {
+        flex-direction: column;
+    }
+
+    .visual-pane, .form-pane {
+        flex: none;
+        width: 100%;
+    }
+
+    /* On mobile, show the whole moon centered */
+    .visual-pane {
+        height: 500px;
+        justify-content: center;
+        padding-left: 0;
+        text-align: center;
+        overflow: hidden;
+    }
+
+    .moon-img {
+        width: 400px;
+        height: 400px;
+        right: 50%;
+        transform: translate(50%, -50%);
+        opacity: 0.5; /* Fade it out more on mobile so text is readable */
+    }
+    
+    .hero-heading {
+        font-size: 3rem;
+    }
+
+    .form-pane {
+        padding: 60px 20px;
+        min-height: auto;
+    }
+}

@@ -215,3 +215,38 @@ modal.addEventListener('click', (e) => {
         modal.style.display = "none";
     }
 });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    
+    /* --- 1. Copy Email Functionality --- */
+    const copyBtn = document.getElementById('copy-action-btn');
+    const tooltip = document.querySelector('.success-tooltip');
+    const emailText = "Prajjwal5108008@gmail.com";
+
+    if(copyBtn) {
+        copyBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(emailText)
+                .then(() => {
+                    // Show Tooltip
+                    tooltip.classList.add('active');
+                    // Hide after 2 seconds
+                    setTimeout(() => {
+                        tooltip.classList.remove('active');
+                    }, 2000);
+                })
+                .catch(err => console.error('Copy failed:', err));
+        });
+    }
+
+    /* --- 2. Button Loading State (Optional visual cue) --- */
+    const form = document.querySelector('.main-form');
+    if(form) {
+        form.addEventListener('submit', function() {
+            const btn = document.querySelector('.send-button');
+            btn.innerHTML = 'Sending...';
+            btn.style.opacity = '0.8';
+            // Formspree will handle the redirection/success page
+        });
+    }
+});
