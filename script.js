@@ -164,3 +164,54 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("scroll", revealOnScroll);
     revealOnScroll(); 
 });
+
+// 1. Marquee Speed Control (Hold to Speed Up)
+document.querySelectorAll('.track-wrapper').forEach(track => {
+    const belt = track.querySelector('.moving-belt');
+
+    // Speed up on hold
+    track.addEventListener('mousedown', () => {
+        belt.classList.add('boost');
+        belt.style.animationPlayState = 'running';
+    });
+
+    // Reset on release
+    track.addEventListener('mouseup', () => {
+        belt.classList.remove('boost');
+        belt.style.animationPlayState = ''; 
+    });
+    
+    // Reset if mouse leaves
+    track.addEventListener('mouseleave', () => {
+        belt.classList.remove('boost');
+        belt.style.animationPlayState = '';
+    });
+});
+
+// 2. Modal Logic (Click to Enlarge)
+const modal = document.getElementById("certModal");
+const modalImg = document.getElementById("modalImage");
+const closeBtn = document.querySelector(".close-modal");
+
+// Attach click event to every card
+document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('click', function() {
+        const img = this.querySelector('img');
+        if(img) {
+            modal.style.display = "flex";
+            modalImg.src = img.src;
+        }
+    });
+});
+
+// Close when clicking X
+closeBtn.addEventListener('click', () => {
+    modal.style.display = "none";
+});
+
+// Close when clicking background
+modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        modal.style.display = "none";
+    }
+});
