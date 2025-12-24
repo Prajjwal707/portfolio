@@ -136,22 +136,21 @@ document.addEventListener("DOMContentLoaded", () => {
     const tabs = document.querySelectorAll(".exp-tab");
     const cards = document.querySelectorAll(".exp-detail-card");
 
-    // 1. Tab Logic
     tabs.forEach(tab => {
         tab.addEventListener("click", () => {
             const target = tab.getAttribute("data-target");
 
-            // Reset States
+          
             tabs.forEach(t => t.classList.remove("active"));
             cards.forEach(c => c.classList.remove("active"));
 
-            // Set Active State
+          
             tab.classList.add("active");
             document.getElementById(target).classList.add("active");
         });
     });
 
-    // 2. Scroll Reveal Logic
+
     const revealOnScroll = () => {
         document.querySelectorAll(".reveal").forEach(el => {
             const triggerPoint = window.innerHeight * 0.85;
@@ -165,35 +164,30 @@ document.addEventListener("DOMContentLoaded", () => {
     revealOnScroll(); 
 });
 
-// 1. Marquee Speed Control (Hold to Speed Up)
 document.querySelectorAll('.track-wrapper').forEach(track => {
     const belt = track.querySelector('.moving-belt');
 
-    // Speed up on hold
     track.addEventListener('mousedown', () => {
         belt.classList.add('boost');
         belt.style.animationPlayState = 'running';
     });
 
-    // Reset on release
     track.addEventListener('mouseup', () => {
         belt.classList.remove('boost');
         belt.style.animationPlayState = ''; 
     });
     
-    // Reset if mouse leaves
+
     track.addEventListener('mouseleave', () => {
         belt.classList.remove('boost');
         belt.style.animationPlayState = '';
     });
 });
 
-// 2. Modal Logic (Click to Enlarge)
 const modal = document.getElementById("certModal");
 const modalImg = document.getElementById("modalImage");
 const closeBtn = document.querySelector(".close-modal");
 
-// Attach click event to every card
 document.querySelectorAll('.card').forEach(card => {
     card.addEventListener('click', function() {
         const img = this.querySelector('img');
@@ -204,22 +198,18 @@ document.querySelectorAll('.card').forEach(card => {
     });
 });
 
-// Close when clicking X
 closeBtn.addEventListener('click', () => {
     modal.style.display = "none";
 });
 
-// Close when clicking background
 modal.addEventListener('click', (e) => {
     if (e.target === modal) {
         modal.style.display = "none";
     }
 });
 
-
 document.addEventListener('DOMContentLoaded', () => {
     
-    /* --- 1. Copy Email Functionality (Unchanged) --- */
     const copyBtn = document.getElementById('copy-action-btn');
     const tooltip = document.querySelector('.success-tooltip');
     const emailText = "Prajjwal5108008@gmail.com";
@@ -237,10 +227,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* --- 2. AJAX Form Handling (Formspree) --- */
+
     const form = document.getElementById("contact-form");
     const button = document.getElementById("submit-btn");
-    // Fallback in case the span isn't there, grab the button text directly
     const btnTextSpan = button ? button.querySelector(".btn-text") : null;
     const status = document.getElementById("form-status");
 
@@ -248,31 +237,29 @@ document.addEventListener('DOMContentLoaded', () => {
         async function handleSubmit(event) {
             event.preventDefault();
             
-            // 1. Lock the interface
+          
             button.disabled = true;
             if(btnTextSpan) btnTextSpan.innerText = "Sending...";
-            else button.innerText = "Sending..."; // Fallback
+            else button.innerText = "Sending..."; 
             
-            status.className = "status-message"; // Reset classes
-            status.innerText = ""; // Clear old text
+            status.className = "status-message"; 
+            status.innerText = "";
 
             const data = new FormData(event.target);
 
             try {
-                // 2. Send the request
+           
                 const response = await fetch(event.target.action, {
                     method: form.method,
                     body: data,
                     headers: { 'Accept': 'application/json' }
                 });
 
-                // 3. Handle Success
                 if (response.ok) {
                     status.innerText = "Message sent successfully!";
                     status.classList.add('success');
-                    form.reset(); // Clear the inputs
+                    form.reset();
                 } 
-                // 4. Handle Errors
                 else {
                     const data = await response.json();
                     status.classList.add('error');
@@ -284,16 +271,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
             } catch (error) {
-                // 5. Network Errors
                 status.classList.add('error');
                 status.innerText = "Network error. Please try again.";
             } finally {
-                // 6. Reset Button State
                 button.disabled = false;
                 if(btnTextSpan) btnTextSpan.innerText = "Send Message";
                 else button.innerText = "Send Message";
                 
-                // Optional: Fade out success message after 5 seconds
                 if (status.classList.contains('success')) {
                     setTimeout(() => {
                         status.style.opacity = '0';

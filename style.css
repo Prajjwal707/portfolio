@@ -48,10 +48,6 @@ header {
     filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3)); 
 }
 
-
-
-
-
 .logo{
     font-size: 3rem;
     color: #b74b4b;
@@ -99,8 +95,6 @@ section {
     min-height: 100vh;
     padding: 10rem 9% 5rem;
 }
-
-
 
 @media(max-width:995px){
     nav{
@@ -459,7 +453,6 @@ span{
     margin-bottom: 40px;
 }
 
-/* Project Link */
 .project-link {
     margin-top: auto; 
     color: #b74b4b;
@@ -522,7 +515,6 @@ span{
 .section-title { font-size: 5rem; font-weight: 900; margin-bottom: 20px; letter-spacing: -2px; }
 .highlight { color: var(--accent-red); }
 
-/* Sidebar Logic */
 .experience-command-center { display: flex; gap: 60px; align-items: flex-start; }
 .exp-sidebar { flex: 0 0 320px; display: flex; flex-direction: column; border-left: 2px solid #222; }
 
@@ -547,7 +539,6 @@ span{
 .exp-tab.active { color: var(--accent-red); border-left-color: var(--accent-red); background: rgba(183, 75, 75, 0.05); }
 .exp-tab.active .tab-logo { filter: grayscale(0); }
 
-/* Stretched Detail Card */
 .exp-content-area { flex: 1; }
 .exp-detail-card {
     display: none;
@@ -555,20 +546,19 @@ span{
     padding: 60px;
     border-radius: 30px;
     border: 1px solid #222;
-    min-height: 800px; /* Stretched downward */
+    min-height: 800px; 
     flex-direction: row; 
     gap: 50px;
 }
 .exp-detail-card.active { display: flex; animation: slideUp 0.6s ease; }
 
-/* Info Column & Achievements */
+
 .info-column { flex: 1.2; }
 .exp-role { font-size: 3rem; line-height: 1.1; margin-bottom: 10px; color: var(--accent-red); }
 .exp-date { display: block; margin-bottom: 40px; color: var(--text-muted); font-size: 1.2rem; }
 .exp-description p { font-size: 1.5rem; line-height: 1.8; margin-bottom: 30px; }
 .achievements li { margin-bottom: 18px; font-size: 1.3rem; color: #ccc; }
 
-/* Fixed Red Pills with Hover Glow */
 .tech-pills { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 50px; position: relative; z-index: 10; }
 .tech-pills span {
     background: var(--accent-red);
@@ -587,12 +577,11 @@ span{
     background: #d45a5a;
 }
 
-/* Certificate Column */
 .cert-column { flex: 1; display: flex; align-items: center; justify-content: center; }
 .cert-image { width: 100%; transition: transform 0.5s ease; }
 .image-proof-container:hover .cert-image { transform: scale(1.08); }
 
-/* Global Animations */
+
 .reveal { opacity: 0; transform: translateY(50px); transition: 1s ease; }
 .reveal.active { opacity: 1; transform: translateY(0); }
 @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
@@ -614,7 +603,6 @@ span{
 .section-title { font-size: 5rem; font-weight: 900; margin-bottom: 20px; letter-spacing: -2px; }
 .highlight { color: var(--accent-red); }
 
-/* Command Center Layout */
 .experience-command-center { display: flex; gap: 60px; align-items: flex-start; }
 .exp-sidebar { flex: 0 0 320px; display: flex; flex-direction: column; border-left: 2px solid #222; }
 
@@ -634,7 +622,6 @@ span{
 
 .exp-tab.active { color: var(--accent-red); border-left-color: var(--accent-red); background: rgba(183, 75, 75, 0.05); }
 
-/* Detail Card Styling */
 .exp-content-area { flex: 1; }
 .exp-detail-card {
     display: none;
@@ -642,17 +629,16 @@ span{
     padding: 60px;
     border-radius: 30px;
     border: 1px solid #222;
-    min-height: 800px; /* Stretched downward */
+    min-height: 800px; 
     flex-direction: row; 
     gap: 50px;
-    align-items: flex-start; /* Ensures top-line alignment */
-    overflow: visible; /* Prevents hover clipping */
+    align-items: flex-start;
+    overflow: visible; 
 }
 .exp-detail-card.active { display: flex; animation: slideUp 0.6s ease; }
 
-/* Content Columns */
 .info-column { flex: 1.2; }
-.cert-column { flex: 1; padding: 10px; } /* Buffer for hover border */
+.cert-column { flex: 1; padding: 10px; } 
 
 .exp-role { font-size: 3rem; line-height: 1.1; margin-bottom: 10px; }
 .exp-role .company { color: var(--accent-red); }
@@ -660,7 +646,6 @@ span{
 .exp-description p { font-size: 1.8rem; line-height: 1.8; margin-bottom: 30px; }
 .achievements li { margin-bottom: 15px; font-size: 1.5rem; color: #ccc; }
 
-/* Tech Pills with Fixed Hover */
 .tech-pills { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 50px; }
 .tech-pills span {
     background: var(--accent-red);
@@ -673,7 +658,6 @@ span{
 }
 .tech-pills span:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(183, 75, 75, 0.5); }
 
-/* Certificate Image with Fixed Border Clipping */
 .image-proof-container {
     width: 100%;
     border-radius: 15px;
@@ -688,9 +672,8 @@ span{
 
 .cert-image { width: 100%; display: block; border-radius: 13px; }
 
-/* Hover: Full image scaling with no border loss */
 .image-proof-container:hover {
-    transform: scale(1.05); /* Scales the whole container including border */
+    transform: scale(1.05); 
     border-color: var(--accent-red);
     box-shadow: 0 40px 80px rgba(183, 75, 75, 0.3);
 }
@@ -718,7 +701,6 @@ nav { display: flex; justify-content: space-between; padding: 20px; color: white
 .nav-links { list-style: none; display: flex; gap: 20px; }
 .nav-links a { color: white; text-decoration: none; cursor: pointer; }
 
-/* --- MARQUEE SECTION --- */
 .achievements-section {
     position: relative;
     width: 100vw;
@@ -729,19 +711,17 @@ nav { display: flex; justify-content: space-between; padding: 20px; color: white
     align-items: center;
     justify-content: center;
     overflow: hidden; 
-    /* Lower Z-index ensures it doesn't block the header */
     z-index: 1; 
 }
 
-/* --- RED GLOW (Subtle Brackets) --- */
+
 .red-mist {
     position: absolute;
-    /* Vertically centered, not touching top/bottom */
     top: 25%;
     height: 50%;
     width: 60px;
     z-index: 20; 
-    pointer-events: none; /* Clicks pass through */
+    pointer-events: none; 
     border-radius: 50%;
     filter: blur(25px);
 }
@@ -776,19 +756,17 @@ nav { display: flex; justify-content: space-between; padding: 20px; color: white
     transform-style: preserve-3d;
 }
 
-/* --- TRACK WRAPPER --- */
 .track-wrapper {
     width: 100%;
     position: relative;
     padding: 20px 0;
     transform-style: preserve-3d;
     z-index: 10; 
-    /* Soft fade on edges */
     mask-image: linear-gradient(to right, transparent 0%, black 30%, black 70%, transparent 100%);
     -webkit-mask-image: linear-gradient(to right, transparent 0%, black 30%, black 70%, transparent 100%);
 }
 
-/* Row Z-Index Logic */
+
 .track-wrapper:hover { z-index: 50; }
 .track-wrapper:hover .moving-belt { animation-play-state: paused !important; }
 
@@ -797,7 +775,6 @@ nav { display: flex; justify-content: space-between; padding: 20px; color: white
     gap: var(--gap);
     width: max-content;
     transform-style: preserve-3d;
-    /* Hardware acceleration to fix glitching */
     will-change: transform; 
     backface-visibility: hidden;
 }
@@ -805,7 +782,7 @@ nav { display: flex; justify-content: space-between; padding: 20px; color: white
 .left-scroll { animation: scrollL var(--speed) linear infinite; }
 .right-scroll { animation: scrollR var(--speed) linear infinite; }
 
-/* --- CARD STYLING --- */
+
 .card {
     width: var(--card-w);
     height: var(--card-h);
@@ -814,7 +791,7 @@ nav { display: flex; justify-content: space-between; padding: 20px; color: white
     flex-shrink: 0;
     cursor: pointer;
     z-index: 1;
-    transform: translate3d(0, 0, 0); /* Anti-flicker */
+    transform: translate3d(0, 0, 0); 
 }
 
 .card-inner {
@@ -826,7 +803,7 @@ nav { display: flex; justify-content: space-between; padding: 20px; color: white
     transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), border-color 0.4s, box-shadow 0.4s;
     transform: scale(0.95);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    overflow: visible; /* Allows border to show fully */
+    overflow: visible; 
 }
 
 .card-inner img {
@@ -835,10 +812,8 @@ nav { display: flex; justify-content: space-between; padding: 20px; color: white
     object-fit: cover;
     display: block;
     border-radius: 8px;
-    /* No Filters as requested */
 }
 
-/* --- HOVER EFFECTS --- */
 .card:hover { z-index: 9999; }
 
 .card:hover .card-inner {
@@ -847,7 +822,6 @@ nav { display: flex; justify-content: space-between; padding: 20px; color: white
     box-shadow: 0 0 40px rgba(183, 75, 75, 0.4);
 }
 
-/* --- ANIMATIONS --- */
 @keyframes scrollL {
     0% { transform: translateX(0); }
     100% { transform: translateX(calc(-1 * (var(--card-w) + var(--gap)) * 6)); }
@@ -860,7 +834,6 @@ nav { display: flex; justify-content: space-between; padding: 20px; color: white
 
 .boost { animation-duration: 15s !important; }
 
-/* --- MODAL --- */
 .image-modal {
     display: none; 
     position: fixed; 
@@ -898,7 +871,6 @@ nav { display: flex; justify-content: space-between; padding: 20px; color: white
     to { transform: scale(1); opacity: 1; }
 }
 
-/* --- Global Reset --- */
 * {
     margin: 0;
     padding: 0;
@@ -922,7 +894,6 @@ body {
     overflow-x: hidden;
 }
 
-/* --- Main Layout: 50/50 Split --- */
 .split-container {
     display: flex;
     width: 100vw;
@@ -931,7 +902,6 @@ body {
     overflow: hidden;
 }
 
-/* --- LEFT SIDE (Visuals) --- */
 .visual-pane {
     flex: 0.8; 
     position: relative;
@@ -957,7 +927,6 @@ body {
     filter: contrast(1.2) brightness(0.8) drop-shadow(0 0 40px rgba(183, 75, 75, 0.4));
 }
 
-/* Text Overlay */
 .overlay-content {
     max-width: 450px; 
     margin-top: -20px; 
@@ -972,7 +941,6 @@ body {
     text-shadow: 0 5px 30px rgba(0,0,0,1);
 }
 
-/* Email Capsule */
 .email-capsule {
     display: inline-flex;
     align-items: center;
@@ -1022,7 +990,6 @@ body {
     opacity: 1;
 }
 
-/* --- RIGHT SIDE (Form Card) --- */
 .form-pane {
     flex: 1.2; 
     background-color: var(--card-dark);
@@ -1043,7 +1010,6 @@ body {
     padding: 20px;
 }
 
-/* Floating Label Inputs */
 .input-box {
     position: relative;
     width: 100%;
@@ -1075,7 +1041,6 @@ body {
     font-size: 1.15rem; 
 }
 
-/* Floating Animation */
 .input-box input:focus ~ label,
 .input-box input:not(:placeholder-shown) ~ label,
 .input-box textarea:focus ~ label,
@@ -1085,7 +1050,7 @@ body {
     color: var(--accent-red);
 }
 
-/* Red Line Animation */
+
 .gls-line {
     position: absolute;
     bottom: 0;
@@ -1101,7 +1066,6 @@ body {
     width: 100%;
 }
 
-/* --- UPDATED: Button & Status Wrapper --- */
 .button-container {
     display: flex;
     flex-direction: column;
@@ -1110,7 +1074,7 @@ body {
     width: 100%;
 }
 
-/* Submit Button */
+
 .send-button {
     padding: 15px;
     background: transparent;
@@ -1128,20 +1092,16 @@ body {
 .send-button:hover {
     background: var(--accent-red);
     box-shadow: 0 0 30px rgba(183, 75, 75, 0.6);
-    /* We remove the color here to avoid confusion and apply it below */
 }
 
-/* Force the text inside to turn white */
 .send-button:hover .btn-text {
     color: #ffffff !important;
 }
 
-/* Also ensure the button itself is white (backup) */
 .send-button:hover {
     color: #ffffff !important;
 }
 
-/* NEW: Disabled/Loading State */
 .send-button:disabled {
     opacity: 0.6;
     cursor: wait;
@@ -1152,9 +1112,8 @@ body {
     pointer-events: none;
 }
 
-/* NEW: Status Message Styling */
 .status-message {
-    height: 20px;          /* Reserves space */
+    height: 20px;          
     margin-top: 12px;
     font-size: 0.95rem;
     font-weight: 500;
@@ -1163,16 +1122,15 @@ body {
 }
 
 .status-message.success {
-    color: #4ade80;        /* Green */
+    color: #4ade80;       
     opacity: 1;
 }
 
 .status-message.error {
-    color: var(--accent-red); /* Red */
+    color: var(--accent-red);
     opacity: 1;
 }
 
-/* --- Social Buttons --- */
 .social-cluster {
     display: flex;
     justify-content: center;
@@ -1196,7 +1154,6 @@ body {
     transform: scale(1.15) translateY(-5px);
 }
 
-/* --- Mobile Responsiveness --- */
 @media (max-width: 900px) {
     .split-container {
         flex-direction: column;
