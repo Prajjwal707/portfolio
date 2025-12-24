@@ -905,13 +905,14 @@ nav { display: flex; justify-content: space-between; padding: 20px; color: white
     box-sizing: border-box;
 }
 
+
 :root {
     --accent-red: #b74b4b;
     --bg-dark: #050505;
     --card-dark: #000000;
     --text-light: #ffffff;
     --text-dim: #a0a0a0;
-    --font-stack: 'Poppins', sans-serif; /* Make sure you import this font */
+    --font-stack: 'Poppins', sans-serif;
 }
 
 body {
@@ -938,13 +939,9 @@ body {
     display: flex;
     align-items: center; 
     justify-content: flex-start; 
-    
-    /* CHANGE: Reduced from 40px to 0px to shift text left */
     padding-left: 0px; 
-    
     z-index: 1;
 }
-
 
 .moon-img {
     position: absolute;
@@ -952,27 +949,19 @@ body {
     right: -275px; 
     transform: translateY(-50%);
     width: 550px;
-    height: 550px; /* Fixed height to ensure circle */
-    object-fit: cover; /* Ensures image fills the square without stretching */
-    border-radius: 50%; /* Makes sure it's a perfect circle */
+    height: 550px; 
+    object-fit: cover; 
+    border-radius: 50%; 
     z-index: 0; 
-    opacity: 0.85; /* Slight transparency to blend */
-    filter: contrast(1.2) brightness(0.8) drop-shadow(0 0 40px rgba(183, 75, 75, 0.4)); /* Red glow and moody look */
+    opacity: 0.85; 
+    filter: contrast(1.2) brightness(0.8) drop-shadow(0 0 40px rgba(183, 75, 75, 0.4));
 }
 
-/* Text Overlay 
-   - z-index: 10 ensures it's on top of the moon.
-*/
+/* Text Overlay */
 .overlay-content {
-    
-    
-    
-    /* CRITICAL CHANGE: Limit width so it doesn't hit the moon */
     max-width: 450px; 
-    
-    /* Optional: If it feels too low, use negative margin to pull it up */
     margin-top: -20px; 
-    margin-left: -120px;
+    margin-left: -115px;
 }
 
 .hero-heading {
@@ -980,7 +969,6 @@ body {
     font-weight: 700;
     line-height: 1.1;
     margin-bottom: 30px;
-    /* Strong shadow to make text pop against the bright moon part */
     text-shadow: 0 5px 30px rgba(0,0,0,1);
 }
 
@@ -989,10 +977,10 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 15px;
-    background: rgba(0, 0, 0, 0.7); /* Dark background for contrast */
+    background: rgba(0, 0, 0, 0.7);
     padding: 12px 25px;
     border-radius: 50px;
-    border: 1px solid rgba(183, 75, 75, 0.3); /* Subtle red border */
+    border: 1px solid rgba(183, 75, 75, 0.3);
     backdrop-filter: blur(10px);
     position: relative;
 }
@@ -1036,7 +1024,7 @@ body {
 
 /* --- RIGHT SIDE (Form Card) --- */
 .form-pane {
-    flex: 1.2; /* Makes the form section wider */
+    flex: 1.2; 
     background-color: var(--card-dark);
     display: flex;
     align-items: center;
@@ -1074,12 +1062,9 @@ body {
     font-family: inherit;
     resize: none;
     transition: border-color 0.3s;
-    
-    /* FIX: Removes the bottom whitespace gap so lines don't separate */
     display: block; 
 }
 
-/* Labels */
 .input-box label {
     position: absolute;
     top: 10px;
@@ -1087,8 +1072,6 @@ body {
     color: #666;
     pointer-events: none;
     transition: 0.3s ease all;
-    
-    /* FIX: Increased size for better visibility */
     font-size: 1.15rem; 
 }
 
@@ -1098,10 +1081,7 @@ body {
 .input-box textarea:focus ~ label,
 .input-box textarea:not(:placeholder-shown) ~ label {
     top: -20px;
-    
-    /* FIX: Slightly larger floating text */
     font-size: 1.1rem; 
-    
     color: var(--accent-red);
 }
 
@@ -1118,6 +1098,15 @@ body {
 
 .input-box input:focus ~ .gls-line,
 .input-box textarea:focus ~ .gls-line {
+    width: 100%;
+}
+
+/* --- UPDATED: Button & Status Wrapper --- */
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
     width: 100%;
 }
 
@@ -1138,11 +1127,52 @@ body {
 
 .send-button:hover {
     background: var(--accent-red);
-    color: white; /* Text turns white */
     box-shadow: 0 0 30px rgba(183, 75, 75, 0.6);
+    /* We remove the color here to avoid confusion and apply it below */
 }
 
-/* --- Social Buttons (Big & Glowing) --- */
+/* Force the text inside to turn white */
+.send-button:hover .btn-text {
+    color: #ffffff !important;
+}
+
+/* Also ensure the button itself is white (backup) */
+.send-button:hover {
+    color: #ffffff !important;
+}
+
+/* NEW: Disabled/Loading State */
+.send-button:disabled {
+    opacity: 0.6;
+    cursor: wait;
+    border-color: #555;
+    color: #888;
+    background: transparent;
+    box-shadow: none;
+    pointer-events: none;
+}
+
+/* NEW: Status Message Styling */
+.status-message {
+    height: 20px;          /* Reserves space */
+    margin-top: 12px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    opacity: 0;            
+    transition: opacity 0.3s ease;
+}
+
+.status-message.success {
+    color: #4ade80;        /* Green */
+    opacity: 1;
+}
+
+.status-message.error {
+    color: var(--accent-red); /* Red */
+    opacity: 1;
+}
+
+/* --- Social Buttons --- */
 .social-cluster {
     display: flex;
     justify-content: center;
@@ -1152,7 +1182,7 @@ body {
 
 .glow-icon {
     color: #555;
-    font-size: 2.2rem; /* Much bigger size */
+    font-size: 2.2rem;
     transition: all 0.3s ease;
     text-decoration: none;
     display: flex;
@@ -1160,10 +1190,8 @@ body {
     justify-content: center;
 }
 
-/* Neon Glow Effect on Hover */
 .glow-icon:hover {
     color: var(--accent-red);
-    /* This text-shadow creates the neon effect */
     text-shadow: 0 0 10px var(--accent-red), 0 0 20px var(--accent-red);
     transform: scale(1.15) translateY(-5px);
 }
@@ -1179,7 +1207,6 @@ body {
         width: 100%;
     }
 
-    /* On mobile, show the whole moon centered */
     .visual-pane {
         height: 500px;
         justify-content: center;
@@ -1193,7 +1220,7 @@ body {
         height: 400px;
         right: 50%;
         transform: translate(50%, -50%);
-        opacity: 0.5; /* Fade it out more on mobile so text is readable */
+        opacity: 0.5; 
     }
     
     .hero-heading {
@@ -1205,3 +1232,5 @@ body {
         min-height: auto;
     }
 }
+
+

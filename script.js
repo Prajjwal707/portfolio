@@ -219,7 +219,7 @@ modal.addEventListener('click', (e) => {
 
 document.addEventListener('DOMContentLoaded', () => {
     
-    /* --- 1. Copy Email Functionality --- */
+    /* --- 1. Copy Email Functionality (Unchanged) --- */
     const copyBtn = document.getElementById('copy-action-btn');
     const tooltip = document.querySelector('.success-tooltip');
     const emailText = "Prajjwal5108008@gmail.com";
@@ -228,9 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
         copyBtn.addEventListener('click', () => {
             navigator.clipboard.writeText(emailText)
                 .then(() => {
-                    // Show Tooltip
                     tooltip.classList.add('active');
-                    // Hide after 2 seconds
                     setTimeout(() => {
                         tooltip.classList.remove('active');
                     }, 2000);
@@ -239,14 +237,71 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* --- 2. Button Loading State (Optional visual cue) --- */
-    const form = document.querySelector('.main-form');
-    if(form) {
-        form.addEventListener('submit', function() {
-            const btn = document.querySelector('.send-button');
-            btn.innerHTML = 'Sending...';
-            btn.style.opacity = '0.8';
-            // Formspree will handle the redirection/success page
-        });
+    /* --- 2. AJAX Form Handling (Formspree) --- */
+    const form = document.getElementById("contact-form");
+    const button = document.getElementById("submit-btn");
+    // Fallback in case the span isn't there, grab the button text directly
+    const btnTextSpan = button ? button.querySelector(".btn-text") : null;
+    const status = document.getElementById("form-status");
+
+    if (form && button) {
+        async function handleSubmit(event) {
+            event.preventDefault();
+            
+            // 1. Lock the interface
+            button.disabled = true;
+            if(btnTextSpan) btnTextSpan.innerText = "Sending...";
+            else button.innerText = "Sending..."; // Fallback
+            
+            status.className = "status-message"; // Reset classes
+            status.innerText = ""; // Clear old text
+
+            const data = new FormData(event.target);
+
+            try {
+                // 2. Send the request
+                const response = await fetch(event.target.action, {
+                    method: form.method,
+                    body: data,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                // 3. Handle Success
+                if (response.ok) {
+                    status.innerText = "Message sent successfully!";
+                    status.classList.add('success');
+                    form.reset(); // Clear the inputs
+                } 
+                // 4. Handle Errors
+                else {
+                    const data = await response.json();
+                    status.classList.add('error');
+                    
+                    if (Object.hasOwn(data, 'errors')) {
+                        status.innerText = data["errors"].map(error => error["message"]).join(", ");
+                    } else {
+                        status.innerText = "Oops! Submission failed.";
+                    }
+                }
+            } catch (error) {
+                // 5. Network Errors
+                status.classList.add('error');
+                status.innerText = "Network error. Please try again.";
+            } finally {
+                // 6. Reset Button State
+                button.disabled = false;
+                if(btnTextSpan) btnTextSpan.innerText = "Send Message";
+                else button.innerText = "Send Message";
+                
+                // Optional: Fade out success message after 5 seconds
+                if (status.classList.contains('success')) {
+                    setTimeout(() => {
+                        status.style.opacity = '0';
+                    }, 5000);
+                }
+            }
+        }
+
+        form.addEventListener("submit", handleSubmit);
     }
 });
